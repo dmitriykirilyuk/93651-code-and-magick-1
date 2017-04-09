@@ -35,17 +35,17 @@ window.renderStatistics = function (ctx, names, times) {
   for (i = 0; i < times.length; i++) {
     var positionX = initialX + i * (barWidth + indent);
     var positionY = initialY + histogramHeight + 30;
-    var timeTracker = times[i].toFixed(0);
+    var timeTracker = times[i];
     var name = names[i];
     ctx.fillStyle = '#000';
-    ctx.fillText(timeTracker, positionX, 100);
+    ctx.fillText(timeTracker.toFixed(0), positionX, 100);
     ctx.fillText(name, positionX, positionY);
-    if (names[i] === 'Вы') {
+    if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       ctx.fillStyle = ['rgba(21, 96, 189, ', (Math.random()).toFixed(1), ')'].join('');
     }
-    ctx.fillRect(positionX, positionY, barWidth, times[i] * -step);
+    ctx.fillRect(positionX, positionY, barWidth, timeTracker * -step);
   }
 };
 
